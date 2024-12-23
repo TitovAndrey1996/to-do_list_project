@@ -1,0 +1,276 @@
+/* Базові стилі */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* Дозволяє футеру залишатися внизу */
+}
+
+.main {
+  background-image: url('../img/img_backgrond.jpg'); /* Вкажи шлях до твого зображення */
+  background-size: cover; /* Зображення покриває весь елемент */
+  background-position: center; /* Центруємо зображення */
+  background-repeat: no-repeat; /* Зображення не повторюється */
+  position: relative; /* Для накладання прозорого шару на фон */
+}
+
+/* Напівпрозорий шар для зменшення контрастності */
+.main::before {
+  content: ''; /* Створюємо віртуальний елемент */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.5); /* Білий напівпрозорий фон (0.5 - прозорість) */
+  z-index: -1; /* Залишаємо фон за контентом */
+}
+
+/* Хедер */
+.header {
+  background-color: #007bff;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.header__title {
+  margin: 0;
+}
+
+/* Секція To-Do */
+.todo {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.todo__form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.todo__input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.todo__add-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.todo__add-button:hover {
+  background-color: #218838;
+}
+
+.todo__tasks-form {
+  display: block;
+}
+
+/* Контейнер для задач */
+.todo__task {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  position: relative; /* Додано для коректного розташування підзадач */
+}
+
+.todo__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* .todo__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+} */
+
+.todo__item {
+  margin-bottom: 1rem; /* Відступ між завданнями */
+}
+
+.todo__item--important {
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.todo__task-text {
+  flex-grow: 1; /* Текст займає весь доступний простір */
+  margin-right: 1rem; /* Відступ між текстом і кнопками */
+}
+
+/* Кнопки завдань */
+.todo__important-button,
+.todo__delete-button,
+.todo__complete-button,
+.todo__edit-button,
+.todo__add-subtask-button {
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.todo__important-button {
+  background-color: #ffc107;
+  color: black;
+}
+
+.todo__important-button:hover {
+  background-color: #e0a800;
+}
+
+.todo__delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.todo__delete-button:hover {
+  background-color: #c82333;
+}
+
+.todo__complete-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.todo__complete-button:hover {
+  background-color: #218838;
+}
+
+.todo__edit-button {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.todo__edit-button:hover {
+  background-color: #138496;
+}
+
+.todo__add-subtask-button {
+  background-color: #6f42c1;
+  color: white;
+}
+
+.todo__add-subtask-button:hover {
+  background-color: #5a3796;
+}
+
+/* Контейнер для підзадач */
+/* .todo__subtask-list {
+  padding-left: 20px; 
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px; 
+  position: relative;
+} */
+
+.todo__subtask-list {
+  margin: 0;
+  padding: 0;
+  /* padding: 0 0 0 1rem; */
+  list-style-type: disc;
+}
+
+.todo__subtask-container {
+  padding-left: 2rem; /* Відступ для вкладених підзадач */
+}
+
+/* Підзадача */
+.todo__subtask-item {
+  margin-bottom: 5px;
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 0.9rem;
+  position: relative; /* Для коректного відображення */
+}
+
+/* Поле вводу для підзадачі */
+.todo__subtask-input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: calc(100% - 20px); /* Трохи коротше за батьківське поле */
+  margin-top: 10px;
+  margin-left: 20px; /* Відступ від батьківського завдання */
+}
+
+/* Завершені завдання */
+.todo__task-text--completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+/* .footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #ddd;
+  margin-top: auto; 
+} */
+
+/* Для зафіксованого footer */
+footer {
+  position: fixed;
+  bottom: 0;  /* Закріплює футер внизу */
+  width: 100%;  /* Займає всю ширину */
+  background-color: #c0c0c0;  /* Сріблястий відтінок */
+  color: white;  /* Білий текст */
+  padding: 10px 0;  /* Відступи для футера */
+  text-align: center;  /* Текст по центру */
+  font-size: 14px;  /* Розмір шрифту */
+}
+
+/* Стилі для футера при наведені */
+footer:hover {
+  background-color: #a9a9a9;  /* Темніший відтінок при наведені */
+}
+
+
+.footer__text {
+  margin: 0;
+}
+
+
+/* ul#list {
+  display: block; 
+} */
+
+.todo__task-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Вирівнюємо кнопки праворуч */
+  margin-bottom: 0.5rem; /* Відступ між завданням і підзадачами */
+}
+
+/* Важливе підзавдання */
+.todo__subtask--important {
+  background-color: rgba(255, 215, 0, 0.3); /* М'який жовтий колір */
+  border-left: 5px solid gold;
+} 
+
